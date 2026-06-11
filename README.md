@@ -263,9 +263,11 @@ http://<ip-address>/
 
 Log in using the username and password configured in the firmware before uploading.
 
+After logging in, the Status page will be displayed. Open the **Configuration** page to access the system settings.
+
 ### Configure the Shutdown Service
 
-Enter the values provided by the shutdown-service installer:
+On the Configuration page, enter the values provided by the shutdown-service installer:
 
 * Shutdown Service IP Address
 * Shutdown Service Port

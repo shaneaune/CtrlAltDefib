@@ -117,6 +117,99 @@ Install any libraries referenced by the sketch before compiling.
 
 After the firmware has been uploaded successfully, continue with the Proxmox Shutdown Service Setup section.
 
+## Proxmox Shutdown Service Setup
+
+The shutdown service runs inside a lightweight Debian LXC container and receives authenticated shutdown requests from the ESP32.
+
+The installer automatically creates and configures the container, installs all required software, generates SSH keys, and configures the shutdown service.
+
+### Prerequisites
+
+* Proxmox VE 8.x or newer
+* Internet access from the Proxmox host
+* A Debian 12 container template available in Proxmox
+
+If a Debian 12 template is not already installed:
+
+1. Open the Proxmox web interface.
+2. Select the local storage.
+3. Open **CT Templates**.
+4. Download the latest **Debian 12 Standard** template.
+
+### Download the Repository
+
+Log in to the Proxmox host as root and clone the repository:
+
+```bash
+git clone https://github.com/shaneaune/CtrlAltDefib.git
+cd CtrlAltDefib/shutdown-service
+```
+
+### Run the Installer
+
+Make the installer executable and start it:
+
+```bash
+chmod +x install-shutdown-service.sh
+./install-shutdown-service.sh
+```
+
+The installer will:
+
+* Create the shutdown-service container
+* Install required packages
+* Generate the SSH shutdown key
+* Install and start the shutdown service
+* Display the ESP32 configuration settings
+* Generate the authorized_keys entry required for Proxmox shutdown access
+
+### Complete the Action Required Step
+
+When the installer completes, it will display a line similar to:
+
+```text
+command="shutdown -h now",no-port-forwarding,no-agent-forwarding,no-pty ssh-ed25519 ...
+```
+
+Copy the entire line and add it to:
+
+```text
+/root/.ssh/authorized_keys
+```
+
+on the Proxmox host.
+
+You can retrieve the generated line again at any time with:
+
+```bash
+pct exec <CTID> -- cat /root/proxmox_authorized_key.txt
+```
+
+### Record the ESP32 Settings
+
+The installer will display:
+
+* Shutdown Service IP
+* Shutdown Service Port
+* Shutdown Token
+
+These values will be required when configuring the ESP32 web interface.
+
+### First Shutdown Test
+
+After the ESP32 has been configured, perform a shutdown test.
+
+The first shutdown request will automatically save the Proxmox host SSH key within the shutdown-service container. Future shutdown requests will use the saved key automatically.
+
+Verify that:
+
+* The ESP32 detects utility power loss
+* The shutdown timer expires as expected
+* The Proxmox host shuts down cleanly
+* Wake-on-LAN startup functions correctly after power restoration
+
+```
+```
 
 ```
 ```

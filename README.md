@@ -84,7 +84,39 @@ Refer to the BOM documentation for a complete list of required components, sourc
 
 The 3D printable enclosure files are located in the `enclosure` directory.
 
-* License
+## Firmware Installation
+
+The firmware has been developed and tested on the ESP32-ETH02 Ethernet module.
+
+Other LAN8720-based ESP32 Ethernet boards may work, but they have not been tested with this project and are not currently supported.
+
+Open the `CtrlAltDefib.ino` sketch located in:
+
+```text
+firmware/CtrlAltDefib/
+```
+
+and upload it to your ESP32-ETH02 using the Arduino IDE.
+
+### Arduino IDE Settings
+
+Use the following settings when compiling and uploading the firmware:
+
+| Setting          | Value |
+| ---------------- | ----- |
+| Board            | TBD   |
+| Upload Speed     | TBD   |
+| Flash Frequency  | TBD   |
+| Flash Mode       | TBD   |
+| Partition Scheme | TBD   |
+| PSRAM            | TBD   |
+
+### Required Libraries
+
+Install any libraries referenced by the sketch before compiling.
+
+After the firmware has been uploaded successfully, continue with the Proxmox Shutdown Service Setup section.
+
 
 ```
 ```

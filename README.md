@@ -69,6 +69,21 @@ shutdown-service/
 * ESP32 Configuration
 * First Shutdown Test
 * Troubleshooting
+
+## Hardware
+
+All hardware files required to build the project are located in the `hardware` directory.
+
+### Included Files
+
+* Bill of Materials (BOM)
+* PCB design files
+* Schematic files
+
+Refer to the BOM documentation for a complete list of required components, sourcing information, and assembly notes.
+
+The 3D printable enclosure files are located in the `enclosure` directory.
+
 * License
 
 ```

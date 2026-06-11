@@ -57,7 +57,7 @@ constexpr const char *BUILD_DATE = __DATE__;
 constexpr const char *BUILD_TIME = __TIME__;
 
 constexpr const char *UI_USERNAME = "admin";
-constexpr const char *UI_PASSWORD = "atomic69";
+constexpr const char *UI_PASSWORD = "CHANGE-ME";
 
 // Log type labels are centralized to avoid typo-prone string literals.
 constexpr const char *LOG_INFO = "INFO";

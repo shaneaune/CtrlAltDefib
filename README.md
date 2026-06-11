@@ -84,6 +84,26 @@ Refer to the BOM documentation for a complete list of required components, sourc
 
 The 3D printable enclosure files are located in the `enclosure` directory.
 
+### Programming the ESP32-ETH02
+
+The ESP32-ETH02 does not include a built-in USB programming interface.
+
+To upload firmware, you will need one of the following:
+
+* An ESP32-ETH02 programming adapter board
+* A USB-to-Serial adapter with access to the required programming pins
+
+The easiest option is to use one of the ESP32-ETH02 programming adapter boards available from Amazon, AliExpress, and other suppliers. These adapter boards typically provide:
+
+* USB-C connection
+* USB-to-Serial interface
+* BOOT button
+* RESET button
+* Power regulation
+
+These adapters allow the ESP32-ETH02 to be programmed directly from the Arduino IDE without additional wiring.
+
+
 ## Firmware Installation
 
 The firmware has been developed and tested on the ESP32-ETH02 Ethernet module.

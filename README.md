@@ -103,6 +103,27 @@ The easiest option is to use one of the ESP32-ETH02 programming adapter boards a
 
 These adapters allow the ESP32-ETH02 to be programmed directly from the Arduino IDE without additional wiring.
 
+### Configure Web Interface Credentials
+
+Before compiling and uploading the firmware, edit the following lines in `CtrlAltDefib.ino`:
+
+```cpp
+constexpr const char *UI_USERNAME = "admin";
+constexpr const char *UI_PASSWORD = "CHANGE-ME";
+```
+
+Change the password to a secure value before uploading the firmware.
+
+Example:
+
+```cpp
+constexpr const char *UI_USERNAME = "admin";
+constexpr const char *UI_PASSWORD = "MySecurePassword";
+```
+
+The web interface will use these credentials for authentication.
+
+
 
 ## Firmware Installation
 

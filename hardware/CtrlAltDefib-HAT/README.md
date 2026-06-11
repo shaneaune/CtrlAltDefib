@@ -5,7 +5,7 @@
 | Qty | Item                                 | Notes                                                         |
 | --- | ------------------------------------ | ------------------------------------------------------------- |
 | 1   | WT32-ETH02                           | Purchased from AliExpress                                     |
-| 1   | Ctrl+Alt+Defib Hat PCB               | Manufactured by JLCPCB                                        |
+| 1   | Ctrl+Alt+Defib Hat PCB               | Manufactured by JLCPCB, Gerbers provided.                                        |
 | 1   | 3D Printed Case                      | STL files provided in the enclosure directory                 |
 | 1   | 3D Printed Lid                       | STL files provided in the enclosure directory                 |
 | 2   | 5V USB Wall Adapter with USB-C Cable | One powers the ESP32 from the UPS, one monitors utility power |
@@ -18,7 +18,7 @@ The JST connectors are optional. The 5V and signal connections may be soldered d
 
 The Ctrl+Alt+Defib Hat circuit is intentionally simple and can be assembled on perf board if a PCB is not available.
 
-If there is sufficient interest, assembled PCBs may be made available in the future.
+If there is sufficient interest, PCBs may be made available in the future.
 
 ---
 

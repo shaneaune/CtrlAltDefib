@@ -249,8 +249,42 @@ Verify that:
 * The Proxmox host shuts down cleanly
 * Wake-on-LAN startup functions correctly after power restoration
 
+## ESP32 Configuration
+
+After uploading the firmware and connecting the ESP32-ETH02 to your network, the device will automatically obtain an IP address using DHCP.
+
+Locate the assigned IP address using your router, DHCP server, or a network scanning tool and open the web interface in your browser:
+
+```text
+http://<ip-address>/
 ```
-```
+
+### Log In
+
+Log in using the username and password configured in the firmware before uploading.
+
+### Configure the Shutdown Service
+
+Enter the values provided by the shutdown-service installer:
+
+* Shutdown Service IP Address
+* Shutdown Service Port
+* Shutdown Token
+
+### Configure Shutdown Settings
+
+Set the desired shutdown delay. This determines how long the system will wait after utility power is lost before initiating a Proxmox shutdown.
+
+### Configure Wake-on-LAN
+
+Enter the MAC address of the Proxmox host and configure the desired startup delay.
+
+When utility power is restored, the ESP32 will wait for the configured startup delay before sending the Wake-on-LAN packet.
+
+### Save Settings
+
+Save the configuration using the web interface. The ESP32 will begin monitoring utility power and managing shutdown and startup events using the configured settings.
+
 
 ```
 ```

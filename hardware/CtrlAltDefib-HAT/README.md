@@ -5,12 +5,13 @@
 | Qty | Item                                 | Notes                                                         |
 | --- | ------------------------------------ | ------------------------------------------------------------- |
 | 1   | WT32-ETH02                           | Purchased from AliExpress                                     |
-| 1   | Ctrl+Alt+Defib Hat PCB               | Manufactured by JLCPCB, Gerbers provided.                                        |
+| 1   | Ctrl+Alt+Defib Hat PCB               | Manufactured by JLCPCB, Gerbers provided.                     |
 | 1   | 3D Printed Case                      | STL files provided in the enclosure directory                 |
 | 1   | 3D Printed Lid                       | STL files provided in the enclosure directory                 |
 | 2   | 5V USB Wall Adapter with USB-C Cable | One powers the ESP32 from the UPS, one monitors utility power |
 | 2   | USB-C to 2-Wire Power Cable          | Available from Amazon and other suppliers                     |
 | 2   | JST PH 2.0mm Male Plug               | Typically supplied with matching female connectors            |
+| 1   | ESP32-ETH02 Programming Adapter      | Required for firmware uploads                                 |
 
 ### Notes
 

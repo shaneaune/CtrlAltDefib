@@ -82,9 +82,11 @@ The utility power sensing adapter must be connected to a non-UPS outlet. If it i
 
 ## Assembled Unit
 
-![Ctrl+Alt+Defib](docs/images/Case-End.jpg)
-![Ctrl+Alt+Defib](docs/images/Case-esp32.jpg)
-![Ctrl+Alt+Defib](docs/images/Case-inside.jpg)
+<p align="center">
+  <img src="docs/images/Case-End.jpg" width="200">
+  <img src="docs/images/Case-esp32.jpg" width="200">
+  <img src="docs/images/Case-inside.jpg" width="200">
+</p>
 
 ### Included Files
 
@@ -315,6 +317,12 @@ When utility power is restored, the ESP32 will wait for the configured startup d
 ### Save Settings
 
 Save the configuration using the web interface. The ESP32 will begin monitoring utility power and managing shutdown and startup events using the configured settings.
+
+<p align="center">
+  <img src="docs/images/Webpage-status.jpg" width="250">
+  <img src="docs/images/Webpage-config.jpg" width="250">
+  <img src="docs/images/Webpage-log.jpg" width="250">
+</p>
 
 ## First Shutdown Test
 

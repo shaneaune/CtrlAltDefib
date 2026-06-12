@@ -4,7 +4,7 @@
 
 The system monitors utility power using a standard 5V USB power adapter. When utility power is lost, a configurable shutdown timer begins. If power is not restored before the timer expires, the Ctrl+Alt+Defib unit sends a secure shutdown request to a Proxmox shutdown service running in a lightweight Linux container. The shutdown service then performs a controlled shutdown of the Proxmox host to protect virtual machines, containers, and storage from unexpected power loss before the UPS batteries are depleted.
 
-The ESP32 remains powered by the UPS during an outage, allowing it to continue monitoring power status. When utility power is restored, a separate configurable startup timer begins. Once the startup delay has expired, the Ctrl+Alt+Defib unit can automatically send a Wake-on-LAN packet to restart the Proxmox host.
+The ESP32 remains powered by the UPS during an outage, allowing it to continue monitoring power status. When utility power is restored, a separate configurable startup timer begins. Once the startup delay has expired, the Ctrl+Alt+Defib unit automatically sends a Wake-on-LAN packet to restart the Proxmox host.
 
 The project is designed to be simple to deploy, inexpensive to build, and easy to configure. All settings are managed through a built-in web interface hosted directly on the Ctrl+Alt+Defib unit.
 
@@ -12,11 +12,10 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 
 ## Features
 
-* ESP32 Ethernet-based monitoring and control
 * Configurable shutdown delay timer
 * Web-based configuration interface
 * Secure token-protected shutdown requests
-* Automated Proxmox shutdown-service installer
+* Automated Proxmox shutdown-service container installer
 * Wake-on-LAN support for automatic Proxmox host startup after power restoration
 * Local event logging and status monitoring
 * Open-source hardware and firmware
@@ -67,8 +66,8 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 2. A standard 5V USB-C power adapter monitors the presence of utility power.
 3. If utility power is lost, a configurable shutdown countdown begins.
 4. If utility power returns before the timer expires, the shutdown countdown is cancelled.
-5. If the timer expires, the ESP32 sends a secure shutdown request to the Proxmox shutdown service.
-6. The shutdown service securely shuts down the Proxmox host.
+5. If the timer expires, the Ctrl+Alt+Defib unit sends a secure shutdown request to the Proxmox shutdown service.
+6. The shutdown service cleanly shuts down the Proxmox host.
 7. When utility power is restored, a configurable startup countdown begins.
 8. When the startup countdown expires, the Ctrl+Alt+Defib unit automatically sends a Wake-on-LAN packet to restart the Proxmox host.
 
@@ -83,8 +82,6 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 All hardware files required to build the project are located in the hardware/CtrlAltDefib-HAT directory.
 
 The utility power sensing adapter must be connected to a non-UPS outlet. If it is connected to a UPS-backed outlet, the system will be unable to detect a utility power failure.
-
-Network connectivity between the Ctrl+Alt+Defib unit and the Proxmox host must remain available during a power outage.
 
 The Ctrl+Alt+Defib unit must remain powered during a utility power outage. This is typically accomplished using a UPS, but a suitable USB battery pack may also be used.
 
@@ -170,6 +167,24 @@ constexpr const char *UI_PASSWORD = "MySecurePassword";
 The web interface will use these credentials for authentication.
 
 ---
+
+
+### Install ESP32 Board Support
+
+Before compiling the firmware, install the ESP32 board package using the Arduino IDE Board Manager.
+
+1. Open **Tools → Board → Boards Manager**.
+2. Search for:
+
+ESP32
+
+3. Install the ESP32 package published by Espressif Systems.
+
+After installation, select:
+
+Tools → Board → ESP32 Arduino → ESP32 Dev Module
+
+and configure the settings shown below.
 
 ### Arduino IDE Settings
 

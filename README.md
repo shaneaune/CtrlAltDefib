@@ -146,29 +146,6 @@ firmware/CtrlAltDefib/
 
 and upload it to your ESP32-ETH02 using the Arduino IDE.
 
-### Configure Web Interface Credentials
-
-Before compiling and uploading the firmware, edit the following lines in `CtrlAltDefib.ino`:
-
-```cpp
-constexpr const char *UI_USERNAME = "admin";
-constexpr const char *UI_PASSWORD = "CHANGE-ME";
-```
-
-Change the password to a secure value before uploading the firmware.
-
-Example:
-
-```cpp
-constexpr const char *UI_USERNAME = "admin";
-constexpr const char *UI_PASSWORD = "MySecurePassword";
-```
-
-The web interface will use these credentials for authentication.
-
----
-
-
 ### Install ESP32 Board Support
 
 Before compiling the firmware, install the ESP32 board package using the Arduino IDE Board Manager.
@@ -207,6 +184,30 @@ The firmware was developed and tested using the following Arduino IDE settings:
 <p align="left">
   <img src="docs/images/Arduino-IDE-Settings.jpg" width="500">
 </p>
+
+---
+
+### Configure Web Interface Credentials
+
+Before compiling and uploading the firmware, edit the following lines in `CtrlAltDefib.ino`:
+
+```cpp
+constexpr const char *UI_USERNAME = "admin";
+constexpr const char *UI_PASSWORD = "CHANGE-ME";
+```
+
+Change the password to a secure value before uploading the firmware.
+
+Example:
+
+```cpp
+constexpr const char *UI_USERNAME = "admin";
+constexpr const char *UI_PASSWORD = "MySecurePassword";
+```
+
+The web interface will use these credentials for authentication.
+
+---
 
 ### Uploading the Firmware
 

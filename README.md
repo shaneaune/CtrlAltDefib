@@ -28,6 +28,17 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 
 ```text
 .
+├── docs
+│   └── images
+│       ├── Arduino-IDE-Settings.jpg
+│       ├── Case-End.jpg
+│       ├── Case-esp32.jpg
+│       ├── Case-inside.jpg
+│       ├── Hat-schematic.png
+│       ├── PCB-hat.jpg
+│       ├── Webpage-config.jpg
+│       ├── Webpage-log.jpg
+│       └── Webpage-status.jpg
 ├── enclosure
 │   └── stl
 │       ├── CtrlAltDefib Case Lid.stl

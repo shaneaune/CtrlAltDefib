@@ -204,7 +204,7 @@ The firmware was developed and tested using the following Arduino IDE settings:
 | Upload Speed                         | 115200                                           |
 | Zigbee Mode                          | Disabled                                         |
 
-<p align="center">
+<p align="left">
   <img src="docs/images/Arduino-IDE-Settings.jpg" width="500">
 </p>
 

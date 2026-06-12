@@ -282,19 +282,30 @@ When the installer completes, it will display a line similar to:
 command="shutdown -h now",no-port-forwarding,no-agent-forwarding,no-pty ssh-ed25519 ...
 ```
 
-Copy the entire line and add it to:
+Copy the entire line and add it to the Proxmox host's authorized_keys file:
 
-```text
-/root/.ssh/authorized_keys
+```bash
+nano /root/.ssh/authorized_keys
 ```
 
-on the Proxmox host.
+Paste the generated line onto a new line at the end of the file.
 
-You can retrieve the generated line again at any time with:
+To save the file:
+
+Ctrl+O
+Enter
+
+To exit Nano:
+
+Ctrl+X
+
+On the Proxmox host you can retrieve the generated line again at any time with:
 
 ```bash
 pct exec <CTID> -- cat /root/proxmox_authorized_key.txt
 ```
+
+---
 
 ### Record the ESP32 Settings
 

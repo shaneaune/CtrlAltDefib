@@ -84,6 +84,14 @@ All hardware files required to build the project are located in the hardware/Ctr
 
 The utility power sensing adapter must be connected to a non-UPS outlet. If it is connected to a UPS-backed outlet, the system will be unable to detect a utility power failure.
 
+Network connectivity between the Ctrl+Alt+Defib unit and the Proxmox host must remain available during a power outage.
+
+The Ctrl+Alt+Defib unit must remain powered during a utility power outage. This is typically accomplished using a UPS, but a suitable USB battery pack may also be used.
+
+Network connectivity between the Ctrl+Alt+Defib unit and the Proxmox host must remain available during a power outage. If the Ctrl+Alt+Defib unit communicates through a network switch, the switch should also remain powered until the shutdown process is complete.
+
+Failure to maintain power to the Ctrl+Alt+Defib unit or the network path will prevent the shutdown request from reaching the Proxmox host. 
+
 ---
 
 ## Assembled Unit

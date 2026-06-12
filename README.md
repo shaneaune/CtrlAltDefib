@@ -80,6 +80,12 @@ All hardware files required to build the project are located in the hardware/Ctr
 
 The utility power sensing adapter must be connected to a non-UPS outlet. If it is connected to a UPS-backed outlet, the system will be unable to detect a utility power failure.
 
+## Assembled Unit
+
+![Ctrl+Alt+Defib](docs/images/Case-End.jpg)
+![Ctrl+Alt+Defib](docs/images/Case-esp32.jpg)
+![Ctrl+Alt+Defib](docs/images/Case-inside.jpg)
+
 ### Included Files
 
 * Bill of Materials (BOM)

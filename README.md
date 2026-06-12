@@ -35,6 +35,7 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 │       ├── Case-esp32.jpg
 │       ├── Case-inside.jpg
 │       ├── Hat-schematic.png
+│       ├── Hookup-Diagram.png
 │       ├── PCB-hat.jpg
 │       ├── Webpage-config.jpg
 │       ├── Webpage-log.jpg
@@ -71,14 +72,19 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 7. When utility power is restored, a configurable startup countdown begins.
 8. When the startup countdown expires, the ESP32 can automatically send a Wake-on-LAN packet to restart the Proxmox host.
 
----
+<p align="center">
+  <img src="docs/images/Hookup-Diagram.png" width="700">
+</p>
 
+---
 
 ## Hardware
 
 All hardware files required to build the project are located in the hardware/CtrlAltDefib-HAT directory.
 
 The utility power sensing adapter must be connected to a non-UPS outlet. If it is connected to a UPS-backed outlet, the system will be unable to detect a utility power failure.
+
+---
 
 ## Assembled Unit
 
@@ -87,6 +93,8 @@ The utility power sensing adapter must be connected to a non-UPS outlet. If it i
   <img src="docs/images/Case-esp32.jpg" width="200">
   <img src="docs/images/Case-inside.jpg" width="200">
 </p>
+
+---
 
 ### Included Files
 
@@ -117,7 +125,7 @@ The easiest option is to use one of the ESP32-ETH02 programming adapter boards a
 
 These adapters allow the ESP32-ETH02 to be programmed directly from the Arduino IDE without additional wiring.
 
-
+---
 
 ## Firmware Installation
 
@@ -152,6 +160,8 @@ constexpr const char *UI_PASSWORD = "MySecurePassword";
 ```
 
 The web interface will use these credentials for authentication.
+
+---
 
 ### Arduino IDE Settings
 
@@ -192,6 +202,8 @@ The firmware was developed and tested using the following Arduino IDE settings:
 Install any required libraries when prompted by the Arduino IDE.
 
 After the firmware has been uploaded successfully, continue with the Proxmox Shutdown Service Setup section.
+
+---
 
 ## Proxmox Shutdown Service Setup
 
@@ -271,6 +283,8 @@ The installer will display:
 
 These values will be required when configuring the ESP32 web interface.
 
+---
+
 ### First Shutdown Test
 
 After the ESP32 has been configured, perform a shutdown test.
@@ -328,6 +342,8 @@ Save the configuration using the web interface. The ESP32 will begin monitoring 
   <img src="docs/images/Webpage-log.jpg" width="250">
 </p>
 
+---
+
 ## First Shutdown Test
 
 Before relying on Ctrl+Alt+Defib to protect your Proxmox host, perform a complete functional test.
@@ -366,4 +382,5 @@ After the test is complete, confirm that:
 * Event logs show the expected activity.
 
 Once these checks have been completed successfully, the system is ready for normal operation.
+---
 

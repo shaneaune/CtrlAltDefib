@@ -4,7 +4,7 @@
 
 | Qty | Item                                 | Notes                                                         |
 | --- | ------------------------------------ | ------------------------------------------------------------- |
-| 1   | WT32-ETH02                           | Purchased from AliExpress                                     |
+| 1   | ESP32-ETH02                          | Purchased from AliExpress                                     |
 | 1   | Ctrl+Alt+Defib Hat PCB               | Manufactured by JLCPCB, Gerbers provided.                     |
 | 1   | 3D Printed Case                      | STL files provided in the enclosure directory                 |
 | 1   | 3D Printed Lid                       | STL files provided in the enclosure directory                 |
@@ -37,6 +37,12 @@ If there is sufficient interest, PCBs may be made available in the future.
 | C3        | Filter Capacitor          | 0.1µF Ceramic or Film                   |
 | U1        | ESP32 Connector           | 2.54mm Pitch 1x13 Female Header         |
 | U2        | ESP32 Connector           | 2.54mm Pitch 1x13 Female Header         |
+
+---
+
+<p align="center">
+  <img src="../../docs/images/PCB-hat.jpg" width="500">
+</p>
 
 ---
 

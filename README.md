@@ -141,16 +141,33 @@ and upload it to your ESP32-ETH02 using the Arduino IDE.
 
 ### Arduino IDE Settings
 
-Use the following settings when compiling and uploading the firmware:
+The firmware was developed and tested using the following Arduino IDE settings:
 
-| Setting          | Value |
-| ---------------- | ----- |
-| Board            | TBD   |
-| Upload Speed     | TBD   |
-| Flash Frequency  | TBD   |
-| Flash Mode       | TBD   |
-| Partition Scheme | TBD   |
-| PSRAM            | TBD   |
+| Setting                              | Value                                            |
+| ------------------------------------ | ------------------------------------------------ |
+| Board                                | ESP32 Dev Module                                 |
+| CPU Frequency                        | 240MHz (WiFi/BT)                                 |
+| Core Debug Level                     | Info                                             |
+| Erase All Flash Before Sketch Upload | Disabled                                         |
+| Events Run On                        | Core 1                                           |
+| Flash Frequency                      | 40MHz                                            |
+| Flash Mode                           | DIO                                              |
+| Flash Size                           | 4MB (32Mb)                                       |
+| JTAG Adapter                         | Disabled                                         |
+| Arduino Runs On                      | Core 1                                           |
+| Partition Scheme                     | Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS) |
+| PSRAM                                | Disabled                                         |
+| Upload Speed                         | 115200                                           |
+| Zigbee Mode                          | Disabled                                         |
+
+### Uploading the Firmware
+
+1. Connect the ESP32-ETH02 to your programming adapter.
+2. Connect the programming adapter to your computer using USB.
+3. Open `firmware/CtrlAltDefib/CtrlAltDefib.ino` in the Arduino IDE.
+4. Configure the username and password in the sketch before compiling.
+5. Select the settings listed above.
+6. Compile and upload the firmware.
 
 ### Required Libraries
 
@@ -287,6 +304,42 @@ When utility power is restored, the ESP32 will wait for the configured startup d
 
 Save the configuration using the web interface. The ESP32 will begin monitoring utility power and managing shutdown and startup events using the configured settings.
 
+## First Shutdown Test
 
-```
-```
+Before relying on Ctrl+Alt+Defib to protect your Proxmox host, perform a complete functional test.
+
+### Verify Power Detection
+
+1. Ensure the ESP32 is powered from a UPS-backed outlet.
+2. Ensure the utility power sensing adapter is connected to a non-UPS outlet.
+3. Open the Ctrl+Alt+Defib Status page.
+4. Verify that utility power is reported as present.
+
+### Verify Shutdown Operation
+
+1. Temporarily disconnect the utility power sensing adapter.
+2. Verify that the shutdown countdown begins.
+3. Allow the countdown to expire.
+4. Confirm that the Proxmox host shuts down cleanly.
+
+### Verify Startup Operation
+
+1. Restore utility power.
+2. Verify that the startup countdown begins.
+3. Allow the startup delay to expire.
+4. Confirm that a Wake-on-LAN packet is sent.
+5. Verify that the Proxmox host powers on successfully.
+
+### Verify System Status
+
+After the test is complete, confirm that:
+
+* Utility power status is reported correctly.
+* Shutdown countdown operates correctly.
+* Startup countdown operates correctly.
+* The Proxmox host shuts down cleanly.
+* Wake-on-LAN startup functions correctly.
+* Event logs show the expected activity.
+
+Once these checks have been completed successfully, the system is ready for normal operation.
+

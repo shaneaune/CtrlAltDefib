@@ -20,7 +20,7 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 * Wake-on-LAN support for automatic Proxmox host startup after power restoration
 * Local event logging and status monitoring
 * Open-source hardware and firmware
-* Designed for WT32-ETH01 and WT32-ETH02 modules
+* Designed and tested for the ESP32-ETH02 Ethernet module
 
 ---
 
@@ -60,19 +60,12 @@ shutdown-service/
 
 ---
 
-## Documentation
-
-* Hardware Requirements
-* Hardware Assembly
-* Firmware Installation
-* Proxmox Shutdown Service Setup
-* ESP32 Configuration
-* First Shutdown Test
-* Troubleshooting
 
 ## Hardware
 
 All hardware files required to build the project are located in the `hardware` directory.
+
+The utility power sensing adapter must be connected to a non-UPS outlet. If it is connected to a UPS-backed outlet, the system will be unable to detect a utility power failure.
 
 ### Included Files
 
@@ -103,6 +96,22 @@ The easiest option is to use one of the ESP32-ETH02 programming adapter boards a
 
 These adapters allow the ESP32-ETH02 to be programmed directly from the Arduino IDE without additional wiring.
 
+
+
+## Firmware Installation
+
+The firmware has been developed and tested on the ESP32-ETH02 Ethernet module.
+
+Other LAN8720-based ESP32 Ethernet boards may work, but they have not been tested with this project and are not currently supported.
+
+Open the `CtrlAltDefib.ino` sketch located in:
+
+```text
+firmware/CtrlAltDefib/
+```
+
+and upload it to your ESP32-ETH02 using the Arduino IDE.
+
 ### Configure Web Interface Credentials
 
 Before compiling and uploading the firmware, edit the following lines in `CtrlAltDefib.ino`:
@@ -122,22 +131,6 @@ constexpr const char *UI_PASSWORD = "MySecurePassword";
 ```
 
 The web interface will use these credentials for authentication.
-
-
-
-## Firmware Installation
-
-The firmware has been developed and tested on the ESP32-ETH02 Ethernet module.
-
-Other LAN8720-based ESP32 Ethernet boards may work, but they have not been tested with this project and are not currently supported.
-
-Open the `CtrlAltDefib.ino` sketch located in:
-
-```text
-firmware/CtrlAltDefib/
-```
-
-and upload it to your ESP32-ETH02 using the Arduino IDE.
 
 ### Arduino IDE Settings
 
@@ -171,7 +164,7 @@ The firmware was developed and tested using the following Arduino IDE settings:
 
 ### Required Libraries
 
-Install any libraries referenced by the sketch before compiling.
+Install any required libraries when prompted by the Arduino IDE.
 
 After the firmware has been uploaded successfully, continue with the Proxmox Shutdown Service Setup section.
 

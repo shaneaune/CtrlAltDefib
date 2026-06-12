@@ -228,7 +228,7 @@ After the firmware has been uploaded successfully, continue with the Proxmox Shu
 
 ## Proxmox Shutdown Service Setup
 
-The shutdown service runs inside a lightweight Debian LXC container and receives authenticated shutdown requests from the ESP32.
+The shutdown service runs inside a lightweight Debian LXC container and receives authenticated shutdown requests from the Ctrl+Alt+Defib unit .
 
 The installer automatically creates and configures the container, installs all required software, generates SSH keys, and configures the shutdown service.
 
@@ -269,7 +269,7 @@ The installer will:
 * Install required packages
 * Generate the SSH shutdown key
 * Install and start the shutdown service
-* Display the ESP32 configuration settings
+* Display the Ctrl+Alt+Defib unit configuration settings
 * Generate the authorized_keys entry required for Proxmox shutdown access
 
 ### Complete the Action Required Step
@@ -305,7 +305,7 @@ pct exec <CTID> -- cat /root/proxmox_authorized_key.txt
 
 ---
 
-### Record the ESP32 Settings
+### Record the  Ctrl+Alt+Defib Config Settings
 
 The installer will display:
 
@@ -313,7 +313,7 @@ The installer will display:
 * Shutdown Service Port
 * Shutdown Token
 
-These values will be required when configuring the Ctrl+Alt+Defib web interface.
+These values will be required when configuring the Ctrl+Alt+Defib settings in the web interface.
 
 ---
 
@@ -354,7 +354,7 @@ The first shutdown request will automatically save the Proxmox host SSH key with
 
 Verify that:
 
-* The ESP32 detects utility power loss
+* The Ctrl+Alt+Defib unit detects utility power loss
 * The shutdown timer expires as expected
 * The Proxmox host shuts down cleanly
 * Wake-on-LAN startup functions correctly after power restoration
@@ -363,7 +363,7 @@ Verify that:
 
 ---
 
-## ESP32 Configuration
+## Ctrl+Alt+Defib Web Configuration
 
 After uploading the firmware and connecting the Ctrl+Alt+Defib unit to your network, the device will automatically obtain an IP address using DHCP.
 
@@ -377,7 +377,7 @@ http://<ip-address>/
 
 Log in using the username and password configured in the firmware before uploading.
 
-After logging in, the Status page will be displayed. Open the **Configuration** page to access the system settings.
+After logging in, the Status page will be displayed. Open the **Config** page to access the system settings.
 
 ### Configure the Shutdown Service
 
@@ -395,11 +395,11 @@ Set the desired shutdown delay. This determines how long the system will wait af
 
 Enter the MAC address of the Proxmox host and configure the desired startup delay.
 
-When utility power is restored, the ESP32 will wait for the configured startup delay before sending the Wake-on-LAN packet.
+When utility power is restored, the Ctrl+Alt+Defib unit will wait for the configured startup delay before sending the Wake-on-LAN packet.
 
 ### Save Settings
 
-Save the configuration using the web interface. The Ctrl+Alt+Defib unit will begin monitoring utility power and managing shutdown and startup events using the configured settings.
+Save the configuration using the **Save Config** button. The Ctrl+Alt+Defib unit will begin monitoring utility power and managing shutdown and startup events using the configured settings.
 
 <p align="center">
   <img src="docs/images/Webpage-status.jpg" width="250">

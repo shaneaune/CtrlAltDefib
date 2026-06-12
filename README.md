@@ -27,22 +27,24 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 ## Repository Structure
 
 ```text
-firmware/
-└── CtrlAltDefib/
-    └── CtrlAltDefib.ino
-
-hardware/
-├── BOM/
-├── PCB/
-└── Schematic/
-
-enclosure/
-├── STL/
-└── Printing Notes/
-
-shutdown-service/
-├── install-shutdown-service.sh
-└── README.md
+.
+├── enclosure
+│   └── stl
+│       ├── CtrlAltDefib Case Lid.stl
+│       ├── CtrlAltDefib Case.stl
+│       └── Printing-Notes.md
+├── firmware
+│   └── CtrlAltDefib
+│       └── CtrlAltDefib.ino
+├── hardware
+│   └── CtrlAltDefib-HAT
+│       ├── CtrlAltDefib-HAT-Gerbers.zip
+│       ├── CtrlAltDefib-HAT-Schematic.pdf
+│       └── README.md
+├── LICENSE
+├── README.md
+└── shutdown-service
+    └── install-shutdown-service.sh
 ```
 
 ---
@@ -63,7 +65,7 @@ shutdown-service/
 
 ## Hardware
 
-All hardware files required to build the project are located in the `hardware` directory.
+All hardware files required to build the project are located in the hardware/CtrlAltDefib-HAT directory.
 
 The utility power sensing adapter must be connected to a non-UPS outlet. If it is connected to a UPS-backed outlet, the system will be unable to detect a utility power failure.
 
@@ -73,7 +75,7 @@ The utility power sensing adapter must be connected to a non-UPS outlet. If it i
 * PCB design files
 * Schematic files
 
-Refer to the BOM documentation for a complete list of required components, sourcing information, and assembly notes.
+Refer to the hardware README for the complete bill of materials, sourcing information, and assembly notes.
 
 The 3D printable enclosure files are located in the `enclosure` directory.
 

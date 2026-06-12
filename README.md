@@ -174,6 +174,10 @@ The firmware was developed and tested using the following Arduino IDE settings:
 | Upload Speed                         | 115200                                           |
 | Zigbee Mode                          | Disabled                                         |
 
+<p align="center">
+  <img src="docs/images/Arduino-IDE-Settings.jpg" width="500">
+</p>
+
 ### Uploading the Firmware
 
 1. Connect the ESP32-ETH02 to your programming adapter.

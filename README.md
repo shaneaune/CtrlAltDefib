@@ -1,12 +1,12 @@
 # Ctrl+Alt+Defib
 
-**Ctrl+Alt+Defib** is an ESP32-based power outage monitoring and automated shutdown system designed for Proxmox home labs and small servers.
+**Ctrl+Alt+Defib** is an ESP32-based power outage monitoring and automated shutdown system designed for Proxmox servers.
 
-The system monitors utility power using a standard 5V USB-C power adapter. When utility power is lost, a configurable shutdown timer begins. If power is not restored before the timer expires, the ESP32 sends a secure shutdown request to a Proxmox shutdown service running in a lightweight Linux container. The shutdown service then performs a controlled shutdown of the Proxmox host to protect virtual machines, containers, and storage from unexpected power loss.
+The system monitors utility power using a standard 5V USB power adapter. When utility power is lost, a configurable shutdown timer begins. If power is not restored before the timer expires, the Ctrl+Alt+Defib unit sends a secure shutdown request to a Proxmox shutdown service running in a lightweight Linux container. The shutdown service then performs a controlled shutdown of the Proxmox host to protect virtual machines, containers, and storage from unexpected power loss before the UPS batteries are depleted.
 
-The ESP32 remains powered by the UPS during an outage, allowing it to continue monitoring power status. When utility power is restored, a separate configurable startup timer begins. Once the startup delay has expired, the ESP32 can automatically send a Wake-on-LAN packet to restart the Proxmox host.
+The ESP32 remains powered by the UPS during an outage, allowing it to continue monitoring power status. When utility power is restored, a separate configurable startup timer begins. Once the startup delay has expired, the Ctrl+Alt+Defib unit can automatically send a Wake-on-LAN packet to restart the Proxmox host.
 
-The project is designed to be simple to deploy, inexpensive to build, and easy to configure. All settings are managed through a built-in web interface hosted directly on the ESP32.
+The project is designed to be simple to deploy, inexpensive to build, and easy to configure. All settings are managed through a built-in web interface hosted directly on the Ctrl+Alt+Defib unit.
 
 ---
 
@@ -63,14 +63,14 @@ The project is designed to be simple to deploy, inexpensive to build, and easy t
 
 ## How It Works
 
-1. The ESP32 is powered by the UPS so it remains operational during a power outage.
+1. The Ctrl+Alt+Defib unit is powered by the UPS so it remains operational during a power outage.
 2. A standard 5V USB-C power adapter monitors the presence of utility power.
 3. If utility power is lost, a configurable shutdown countdown begins.
 4. If utility power returns before the timer expires, the shutdown countdown is cancelled.
 5. If the timer expires, the ESP32 sends a secure shutdown request to the Proxmox shutdown service.
 6. The shutdown service securely shuts down the Proxmox host.
 7. When utility power is restored, a configurable startup countdown begins.
-8. When the startup countdown expires, the ESP32 can automatically send a Wake-on-LAN packet to restart the Proxmox host.
+8. When the startup countdown expires, the Ctrl+Alt+Defib unit automatically sends a Wake-on-LAN packet to restart the Proxmox host.
 
 <p align="center">
   <img src="docs/images/Hookup-Diagram.png" width="700">
@@ -123,7 +123,7 @@ The easiest option is to use one of the ESP32-ETH02 programming adapter boards a
 * RESET button
 * Power regulation
 
-These adapters allow the ESP32-ETH02 to be programmed directly from the Arduino IDE without additional wiring.
+These adapters allow the ESP32-ETH02 to be programmed directly from the Arduino IDE over USB without additional wiring.
 
 ---
 
@@ -281,13 +281,42 @@ The installer will display:
 * Shutdown Service Port
 * Shutdown Token
 
-These values will be required when configuring the ESP32 web interface.
+These values will be required when configuring the Ctrl+Alt+Defib web interface.
 
 ---
 
+## First Shutdown Test Preparation
+
+The first time the shutdown-service container connects to the Proxmox host, SSH will prompt to verify the Proxmox host key.
+
+Before performing the first shutdown test:
+
+1. Open a console to the shutdown-service container.
+
+2. Run:
+
+pct enter <CTID>
+
+3. Leave the console open during the first shutdown test.
+
+When the shutdown timer expires, you will see a message similar to:
+
+The authenticity of host '10.0.0.xxx' can't be established.
+ED25519 key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+
+Type:
+
+yes
+
+and press Enter.
+
+The Proxmox host key will be saved and all future shutdowns will occur automatically without additional user interaction.
+
+
 ### First Shutdown Test
 
-After the ESP32 has been configured, perform a shutdown test.
+After the Ctrl+Alt+Defib unit has been configured, perform a shutdown test.
 
 The first shutdown request will automatically save the Proxmox host SSH key within the shutdown-service container. Future shutdown requests will use the saved key automatically.
 
@@ -298,9 +327,13 @@ Verify that:
 * The Proxmox host shuts down cleanly
 * Wake-on-LAN startup functions correctly after power restoration
 
+> **Note:** During the first shutdown test only, you may be prompted to verify the Proxmox host SSH key as described in the previous section.
+
+---
+
 ## ESP32 Configuration
 
-After uploading the firmware and connecting the ESP32-ETH02 to your network, the device will automatically obtain an IP address using DHCP.
+After uploading the firmware and connecting the Ctrl+Alt+Defib unit to your network, the device will automatically obtain an IP address using DHCP.
 
 Locate the assigned IP address using your router, DHCP server, or a network scanning tool and open the web interface in your browser:
 
@@ -334,7 +367,7 @@ When utility power is restored, the ESP32 will wait for the configured startup d
 
 ### Save Settings
 
-Save the configuration using the web interface. The ESP32 will begin monitoring utility power and managing shutdown and startup events using the configured settings.
+Save the configuration using the web interface. The Ctrl+Alt+Defib unit will begin monitoring utility power and managing shutdown and startup events using the configured settings.
 
 <p align="center">
   <img src="docs/images/Webpage-status.jpg" width="250">
@@ -350,7 +383,7 @@ Before relying on Ctrl+Alt+Defib to protect your Proxmox host, perform a complet
 
 ### Verify Power Detection
 
-1. Ensure the ESP32 is powered from a UPS-backed outlet.
+1. Ensure the Ctrl+Alt+Defib unit is powered from a UPS-backed outlet.
 2. Ensure the utility power sensing adapter is connected to a non-UPS outlet.
 3. Open the Ctrl+Alt+Defib Status page.
 4. Verify that utility power is reported as present.

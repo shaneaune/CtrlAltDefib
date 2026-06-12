@@ -174,10 +174,7 @@ The web interface will use these credentials for authentication.
 Before compiling the firmware, install the ESP32 board package using the Arduino IDE Board Manager.
 
 1. Open **Tools → Board → Boards Manager**.
-2. Search for:
-
-ESP32
-
+2. Search for: **ESP32**
 3. Install the ESP32 package published by Espressif Systems.
 
 After installation, select:

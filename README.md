@@ -134,7 +134,12 @@ These adapters allow the ESP32-ETH02 to be programmed directly from the Arduino 
 
 ## Firmware Installation
 
-The firmware has been developed and tested on the ESP32-ETH02 Ethernet module.
+The firmware has been developed and tested on the ESP32-ETH02 Ethernet module using:
+
+| Component | Version |
+|-----------|---------|
+| Arduino IDE | 2.3.10 |
+| ESP32 Board Package (Espressif Systems) | 3.3.10 |
 
 Other LAN8720-based ESP32 Ethernet boards may work, but they have not been tested with this project and are not currently supported.
 
@@ -151,8 +156,13 @@ and upload it to your ESP32-ETH02 using the Arduino IDE.
 Before compiling the firmware, install the ESP32 board package using the Arduino IDE Board Manager.
 
 1. Open **Tools → Board → Boards Manager**.
-2. Search for: **ESP32**
-3. Install the ESP32 package published by Espressif Systems.
+2. Search for:
+
+ESP32
+
+3. Install the **ESP32** package published by **Espressif Systems**.
+
+The firmware was developed and tested using version **3.3.10** of the ESP32 board package.
 
 After installation, select:
 
